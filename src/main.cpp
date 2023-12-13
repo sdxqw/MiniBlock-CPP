@@ -1,11 +1,13 @@
 #include "Game.h"
+#include <SFML/System/Clock.hpp>
 
 int main() {
+    sf::Clock clock;
     mb::Game game;
-    game.create();
 
     while (game.isRunning()) {
-        game.update(0.0f);
+        sf::Time deltaTime = clock.restart();
+        game.update(deltaTime.asSeconds());
         game.render();
     }
 

@@ -6,15 +6,12 @@
 namespace mb {
     class Block {
     private:
-        int x;
-        int y;
+        sf::Vector2i position;
         sf::RectangleShape shape;
     public:
+        static const int SIZE = 50;
 
-        Block(int x, int y) : x(x), y(y) {};
-        ~Block() noexcept = default;
-
-        void create();
+        explicit Block(sf::Vector2i position);
 
         [[nodiscard]] int getX() const noexcept;
 

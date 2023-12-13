@@ -1,41 +1,32 @@
 #include <SFML/Window.hpp>
-#include "Game.h"
 #include <chrono>
+#include "Game.h"
 
 namespace mb {
 
-    void Game::create() {
-        this->videoMode = sf::VideoMode(800, 600);
-        this->window = std::make_unique<sf::RenderWindow>(this->videoMode, "MiniBlock",
-                                                          sf::Style::Titlebar | sf::Style::Close);
-        this->seed = std::chrono::system_clock::now().time_since_epoch().count();
-        this->chunk = std::make_unique<Chunk>(0, 0);
-    }
-
     void Game::render() noexcept {
-        this->window->clear();
-        this->chunk->render(*this->window);
-        this->window->display();
+        window->clear();
+        chunk->render(*window);
+        window->display();
     }
 
-    void Game::update(float dt) noexcept {
-        this->pullEvents();
-
+    void Game::update([[maybe_unused]] float dt) noexcept {
+        pullEvents();
     }
 
     bool Game::isRunning() const noexcept {
-        return this->window->isOpen();
+        return window->isOpen();
     }
 
     void Game::pullEvents() noexcept {
-        while (this->window->pollEvent(this->event)) {
-            switch (this->event.type) {
+        while (window->pollEvent(event)) {
+            switch (event.type) {
                 case sf::Event::Closed:
-                    this->window->close();
+                    window->close();
                     break;
                 case sf::Event::KeyPressed:
-                    if (this->event.key.code == sf::Keyboard::Escape)
-                        this->window->close();
+                    if (event.key.code == sf::Keyboard::Escape)
+                        window->close();
                     break;
                 default:
                     break;
@@ -44,8 +35,13 @@ namespace mb {
     }
 
     Game::~Game() noexcept {
-        this->window->close();
-        this->window.reset();
-        this->chunk.reset();
+        window->close();
+    }
+
+    Game::Game() noexcept {
+        window = std::make_unique<sf::RenderWindow>(sf::VideoMode(800, 600), "MiniBlock",
+                                                    sf::Style::Titlebar | sf::Style::Close);
+        seed = std::chrono::system_clock::now().time_since_epoch().count();
+        chunk = std::make_unique<Chunk>(sf::Vector2i(0, 0));
     }
 }

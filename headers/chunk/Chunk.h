@@ -6,10 +6,11 @@
 
 namespace mb {
     class Chunk {
+    private:
+        sf::Vector2i position;
+        std::vector<std::vector<Block>> blocks;
     public:
-        Chunk(int x, int y);
-
-        ~Chunk() noexcept;
+        explicit Chunk(sf::Vector2i position);
 
         [[nodiscard]] int getX() const noexcept;
 
@@ -18,12 +19,5 @@ namespace mb {
         void render(sf::RenderWindow &window) const;
 
         static const int SIZE = 16;
-
-    private:
-        int x;
-        int y;
-        std::vector<std::vector<std::unique_ptr<Block>>> blocks;
-
-        void generate();
     };
 }

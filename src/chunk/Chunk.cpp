@@ -1,42 +1,32 @@
 #include "chunk/Chunk.h"
 
 namespace mb {
-    Chunk::~Chunk() noexcept {
-        this->x = 0;
-        this->y = 0;
-    }
+    Chunk::Chunk(sf::Vector2i position) : position(position) {
+        blocks.resize(Chunk::SIZE);
+        int startX = getX();
+        int startY = getY();
 
-    Chunk::Chunk(int x, int y) : x(x), y(y) {
-        this->blocks.resize(Chunk::SIZE);
-        for (auto& inner : this->blocks) {
-            inner.resize(Chunk::SIZE);
-        }
-        this->generate();
-    }
-
-    void Chunk::generate() {
         for (int i = 0; i < Chunk::SIZE; ++i) {
+            blocks[i].reserve(Chunk::SIZE);
             for (int j = 0; j < Chunk::SIZE; ++j) {
-                this->blocks[i][j] = std::make_unique<Block>(getX() + i * 50, getY() + j * 50);
-                this->blocks[i][j]->create();
+                blocks[i].emplace_back(sf::Vector2i(startX + i * Block::SIZE, startY + j * Block::SIZE));
             }
         }
     }
 
     int Chunk::getX() const noexcept {
-        return this->x;
+        return position.x;
     }
 
     int Chunk::getY() const noexcept {
-        return this->y;
+        return position.y;
     }
 
     void Chunk::render(sf::RenderWindow &window) const {
-        for (auto & block : this->blocks) {
-            for (const auto & j : block) {
-                window.draw(j->getShape());
+        for (auto &block: blocks) {
+            for (const auto &j: block) {
+                window.draw(j.getShape());
             }
         }
     }
-
 }
