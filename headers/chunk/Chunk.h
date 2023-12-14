@@ -17,7 +17,7 @@ namespace mb {
 
         void render(sf::RenderWindow &window) const;
 
-        Block &at(int x, int y);
+        std::vector<Block>::reference at(int x, int y);
 
         static const int SIZE = 16;
     };

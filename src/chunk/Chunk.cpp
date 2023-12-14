@@ -7,7 +7,8 @@ namespace mb {
 
         for (int i = 0; i < Chunk::SIZE; ++i) {
             for (int j = 0; j < Chunk::SIZE; ++j) {
-                blocks.emplace_back(sf::Vector2i(startX + i * Block::SIZE, startY + j * Block::SIZE), Block::Type::Dirt,
+                blocks.emplace_back(sf::Vector2i(startX + i * Block::SIZE, startY + j * Block::SIZE),
+                                    TextureAtlas::Type::Dirt,
                                     assetsManager);
             }
         }
@@ -18,8 +19,8 @@ namespace mb {
         sprite.setTexture(assetsManager.getTextureAtlas().getTexture());
         for (int i = 0; i < Chunk::SIZE; ++i) {
             for (int j = 0; j < Chunk::SIZE; ++j) {
-                sprite.setTextureRect(blocks[i * Chunk::SIZE + j].getTextureRect());
-                sprite.setScale(Block::SIZE / 16.0f, Block::SIZE / 16.0f);
+                sprite.setTextureRect(blocks.at(i * Chunk::SIZE + j).getTextureRect());
+                sprite.setScale(Block::SIZE, Block::SIZE);
                 sprite.setPosition(static_cast<float>(i * Block::SIZE), static_cast<float>(j * Block::SIZE));
                 window.draw(sprite);
             }

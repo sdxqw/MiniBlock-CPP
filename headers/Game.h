@@ -9,9 +9,9 @@ namespace mb {
     class Game {
     private:
         std::unique_ptr<sf::RenderWindow> window;
+        std::unique_ptr<AssetManager> assetsManager;
         std::unique_ptr<Chunk> chunk;
         int64_t seed{};
-        AssetManager assetsManager;
     public:
         explicit Game() noexcept;
 

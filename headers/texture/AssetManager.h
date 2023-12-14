@@ -1,5 +1,4 @@
 #pragma once
-
 #include "TextureAtlas.h"
 
 namespace mb {
@@ -7,8 +6,9 @@ namespace mb {
     private:
         TextureAtlas textureAtlas;
     public:
+
         AssetManager(const std::string &atlasPath, int spriteSize);
 
-        const TextureAtlas &getTextureAtlas() const;
+        [[nodiscard]] TextureAtlas getTextureAtlas() const;
     };
 }
