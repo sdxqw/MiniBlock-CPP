@@ -39,10 +39,8 @@ namespace mb {
         window->close();
     }
 
-    Game::Game() noexcept {
-        window = std::make_unique<sf::RenderWindow>(sf::VideoMode(800, 600), "MiniBlock",
-                                                    sf::Style::Titlebar | sf::Style::Close);
-        seed = std::chrono::system_clock::now().time_since_epoch().count();
-        chunk = std::make_unique<Chunk>(sf::Vector2i(0, 0));
-    }
+    Game::Game() noexcept: window(std::make_unique<sf::RenderWindow>(sf::VideoMode(800, 600), "Game")),
+                           chunk(std::make_unique<Chunk>(sf::Vector2i(0, 0))),
+                           seed(std::chrono::system_clock::now().time_since_epoch().count()),
+                           assetsManager("assets/block.png", 18) {}
 }

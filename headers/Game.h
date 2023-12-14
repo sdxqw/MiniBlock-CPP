@@ -3,15 +3,17 @@
 #include <memory>
 #include "SFML/Graphics.hpp"
 #include "chunk/Chunk.h"
+#include "texture/AssetManager.h"
 
 namespace mb {
     class Game {
     private:
         std::unique_ptr<sf::RenderWindow> window;
         std::unique_ptr<Chunk> chunk;
-        int64_t seed{};
+        int64_t seed;
+        AssetManager assetsManager;
     public:
-        Game() noexcept;
+        explicit Game() noexcept;
 
         ~Game() noexcept;
 

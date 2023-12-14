@@ -11,7 +11,9 @@ add_executable(MiniBlock src/main.cpp
         src/chunk/Chunk.cpp
         headers/chunk/Chunk.h
         src/texture/TextureAtlas.cpp
-        headers/texture/TextureAtlas.h)
+        headers/texture/TextureAtlas.h
+        src/texture/AssetManager.cpp
+        headers/texture/AssetManager.h)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR "C:\\SFML\\lib\\cmake\\SFML")
