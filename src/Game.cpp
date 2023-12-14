@@ -1,6 +1,5 @@
 #include <SFML/Window.hpp>
 #include <chrono>
-#include <iostream>
 #include "Game.h"
 
 namespace mb {
