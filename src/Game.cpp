@@ -18,7 +18,8 @@ namespace mb {
         return window->isOpen();
     }
 
-    void Game::pullEvents() noexcept {
+    void Game::pullEvents() {
+        sf::Event event{};
         while (window->pollEvent(event)) {
             switch (event.type) {
                 case sf::Event::Closed:

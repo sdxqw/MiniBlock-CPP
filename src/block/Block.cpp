@@ -20,4 +20,8 @@ namespace mb {
     sf::Vector2i Block::getPosition() const noexcept {
         return position;
     }
+
+    Block::Type Block::getType() const noexcept {
+        return type;
+    }
 }

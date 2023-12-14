@@ -8,7 +8,6 @@ namespace mb {
     class Game {
     private:
         std::unique_ptr<sf::RenderWindow> window;
-        sf::Event event{};
         std::unique_ptr<Chunk> chunk;
         int64_t seed{};
     public:
@@ -18,7 +17,7 @@ namespace mb {
 
         [[nodiscard]] bool isRunning() const noexcept;
 
-        void pullEvents() noexcept;
+        void pullEvents();
 
         void render() noexcept;
 

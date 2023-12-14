@@ -5,10 +5,11 @@
 
 namespace mb {
     class Block {
-    private:
-        sf::Vector2i position;
-        sf::RectangleShape shape;
     public:
+        enum class Type {
+            Dirt,
+            grass
+        };
         static const int SIZE = 50;
 
         explicit Block(sf::Vector2i position);
@@ -16,5 +17,11 @@ namespace mb {
         sf::Vector2i getPosition() const noexcept;
 
         const sf::RectangleShape &getShape() const;
+
+        Type getType() const noexcept;
+    private:
+        sf::Vector2i position;
+        sf::RectangleShape shape;
+        Type type{};
     };
 }
