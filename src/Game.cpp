@@ -39,9 +39,7 @@ namespace mb {
         window->close();
     }
 
-    Game::Game() noexcept
-            :
-              seed(std::chrono::system_clock::now().time_since_epoch().count()) {
+    Game::Game() noexcept: seed(std::chrono::system_clock::now().time_since_epoch().count()) {
         window = std::make_unique<sf::RenderWindow>(sf::VideoMode(800, 600), "Minecraft");
         assetsManager = std::make_unique<AssetManager>("assets/block.png", 16);
         chunk = std::make_unique<Chunk>(sf::Vector2i(0, 0), *assetsManager);

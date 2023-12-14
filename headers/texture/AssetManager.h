@@ -1,4 +1,5 @@
 #pragma once
+
 #include "TextureAtlas.h"
 
 namespace mb {
