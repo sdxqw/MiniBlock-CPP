@@ -9,10 +9,10 @@ namespace mb {
     class Block {
     public:
         enum class Type {
-            Dirt = 0,
-            Grass = 1
+            Dirt = 2,
+            Grass = 3
         };
-        static const int SIZE = 50;
+        static const int SIZE = 16;
 
         explicit Block(sf::Vector2i position, Type type, const AssetManager &assetsManager);
 

@@ -19,6 +19,7 @@ namespace mb {
         for (int i = 0; i < Chunk::SIZE; ++i) {
             for (int j = 0; j < Chunk::SIZE; ++j) {
                 sprite.setTextureRect(blocks[i * Chunk::SIZE + j].getTextureRect());
+                sprite.setScale(Block::SIZE / 16.0f, Block::SIZE / 16.0f);
                 sprite.setPosition(static_cast<float>(i * Block::SIZE), static_cast<float>(j * Block::SIZE));
                 window.draw(sprite);
             }

@@ -9,6 +9,9 @@ namespace mb {
 
         textureRects[0] = sf::IntRect(0, 0, spriteSize, spriteSize);
         textureRects[1] = sf::IntRect(spriteSize, 0, spriteSize, spriteSize);
+        textureRects[2] = sf::IntRect(spriteSize * 2, 0, spriteSize, spriteSize);
+        textureRects[3] = sf::IntRect(spriteSize * 3, 0, spriteSize, spriteSize);
+        textureRects[4] = sf::IntRect(spriteSize * 4, 0, spriteSize, spriteSize);
     }
 
     const sf::IntRect &TextureAtlas::getTextureRect(int index) const {

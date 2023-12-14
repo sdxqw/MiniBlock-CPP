@@ -5,7 +5,7 @@ namespace mb {
     Block::Block(sf::Vector2i position, Type type, const AssetManager &assetsManager)
             : position(position),
               type(type),
-              textureRect(assetsManager.getTextureAtlas().getTextureRect(0)) {
+              textureRect(assetsManager.getTextureAtlas().getTextureRect(static_cast<int>(type))) {
     }
 
     sf::Vector2i Block::getPosition() const noexcept {
