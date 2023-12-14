@@ -9,8 +9,9 @@ namespace mb {
     private:
         sf::Vector2i position;
         std::vector<Block> blocks;
+        AssetManager &assetsManager;
     public:
-        explicit Chunk(sf::Vector2i position);
+        explicit Chunk(sf::Vector2i position, AssetManager &assetManager);
 
         [[nodiscard]] sf::Vector2i getPosition() const noexcept;
 

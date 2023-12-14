@@ -1,17 +1,25 @@
 #include "texture/TextureAtlas.h"
+#include <iostream>
 
 namespace mb {
-    TextureAtlas::TextureAtlas(const std::string &atlasPath, int spriteSize) : spriteSize(spriteSize) {
-        atlasTexture.loadFromFile(atlasPath);
+    TextureAtlas::TextureAtlas(const std::string &atlasPath, int spriteSize) {
+        if (!atlasTexture.loadFromFile(atlasPath)) {
+            throw std::runtime_error("Could not load texture atlas");
+        }
+
+        textureRects[0] = sf::IntRect(0, 0, spriteSize, spriteSize);
+        textureRects[1] = sf::IntRect(spriteSize, 0, spriteSize, spriteSize);
     }
 
-    sf::Sprite TextureAtlas::getSprite(int index) const {
-        unsigned int x = (index % (atlasTexture.getSize().x / spriteSize)) * spriteSize;
-        unsigned int y = (index / (atlasTexture.getSize().x / spriteSize)) * spriteSize;
+    const sf::IntRect &TextureAtlas::getTextureRect(int index) const {
+        if (textureRects.find(index) != textureRects.end()) {
+            return textureRects.at(index);
+        } else {
+            throw std::out_of_range("Index does not exist in textureRects");
+        }
+    }
 
-        sf::Sprite sprite;
-        sprite.setTexture(atlasTexture);
-        sprite.setTextureRect(sf::IntRect((int) x, (int) y, spriteSize, spriteSize));
-        return sprite;
+    const sf::Texture &TextureAtlas::getTexture() const noexcept {
+        return atlasTexture;
     }
 }

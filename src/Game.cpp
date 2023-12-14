@@ -1,5 +1,6 @@
 #include <SFML/Window.hpp>
 #include <chrono>
+#include <iostream>
 #include "Game.h"
 
 namespace mb {
@@ -40,7 +41,8 @@ namespace mb {
     }
 
     Game::Game() noexcept: window(std::make_unique<sf::RenderWindow>(sf::VideoMode(800, 600), "Game")),
-                           chunk(std::make_unique<Chunk>(sf::Vector2i(0, 0))),
                            seed(std::chrono::system_clock::now().time_since_epoch().count()),
-                           assetsManager("assets/block.png", 18) {}
+                           assetsManager("assets/block.png", 16) {
+        chunk = std::make_unique<Chunk>(sf::Vector2i(0, 0), assetsManager);
+    }
 }

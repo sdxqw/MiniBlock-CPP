@@ -7,8 +7,8 @@ namespace mb {
     private:
         TextureAtlas textureAtlas;
     public:
-        AssetManager(const std::string& atlasPath, int spriteSize);
+        AssetManager(const std::string &atlasPath, int spriteSize);
 
-        const TextureAtlas& getTextureAtlas() const;
+        const TextureAtlas &getTextureAtlas() const;
     };
 }

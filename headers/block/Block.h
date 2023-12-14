@@ -2,26 +2,29 @@
 
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <memory>
+#include <SFML/Graphics/Sprite.hpp>
+#include "texture/AssetManager.h"
 
 namespace mb {
     class Block {
     public:
         enum class Type {
-            Dirt,
-            grass
+            Dirt = 0,
+            Grass = 1
         };
         static const int SIZE = 50;
 
-        explicit Block(sf::Vector2i position);
+        explicit Block(sf::Vector2i position, Type type, const AssetManager &assetsManager);
 
-        sf::Vector2i getPosition() const noexcept;
+        [[nodiscard]] sf::Vector2i getPosition() const noexcept;
 
-        const sf::RectangleShape &getShape() const;
+        [[nodiscard]] const sf::IntRect &getTextureRect() const;
 
-        Type getType() const noexcept;
+        [[nodiscard]] Type getType() const noexcept;
+
     private:
         sf::Vector2i position;
-        sf::RectangleShape shape;
         Type type{};
+        sf::IntRect textureRect{};
     };
 }

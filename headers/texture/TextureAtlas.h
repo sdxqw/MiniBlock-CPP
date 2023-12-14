@@ -8,11 +8,11 @@ namespace mb {
     private:
         sf::Texture atlasTexture;
         std::map<int, sf::IntRect> textureRects;
-        int spriteSize;
-
     public:
         TextureAtlas(const std::string &atlasPath, int spriteSize);
 
-        sf::Sprite getSprite(int index) const;
+        const sf::IntRect &getTextureRect(int index) const;
+
+        const sf::Texture &getTexture() const noexcept;
     };
 }
