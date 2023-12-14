@@ -13,9 +13,7 @@ namespace mb {
 
         explicit Block(sf::Vector2i position);
 
-        [[nodiscard]] int getX() const noexcept;
-
-        [[nodiscard]] int getY() const noexcept;
+        sf::Vector2i getPosition() const noexcept;
 
         const sf::RectangleShape &getShape() const;
     };

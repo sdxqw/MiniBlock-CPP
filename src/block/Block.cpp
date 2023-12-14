@@ -2,14 +2,6 @@
 #include "block/Block.h"
 
 namespace mb {
-    int Block::getX() const noexcept {
-        return position.x;
-    }
-
-    int Block::getY() const noexcept {
-        return position.y;
-    }
-
     const sf::RectangleShape &Block::getShape() const {
         return shape;
     }
@@ -21,7 +13,11 @@ namespace mb {
         std::uniform_int_distribution<sf::Uint8> dist(0, 255);
         shape.setFillColor(sf::Color(dist(mt), dist(mt), dist(mt)));
         shape.setPosition(sf::Vector2f(
-                static_cast<float>(getX()),
-                static_cast<float>(getY())));
+                static_cast<float>(getPosition().x),
+                static_cast<float>(getPosition().y)));
+    }
+
+    sf::Vector2i Block::getPosition() const noexcept {
+        return position;
     }
 }

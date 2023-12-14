@@ -8,15 +8,16 @@ namespace mb {
     class Chunk {
     private:
         sf::Vector2i position;
-        std::vector<std::vector<Block>> blocks;
+        std::vector<Block> blocks;
     public:
         explicit Chunk(sf::Vector2i position);
 
-        [[nodiscard]] int getX() const noexcept;
-
-        [[nodiscard]] int getY() const noexcept;
+        [[nodiscard]] sf::Vector2i getPosition() const noexcept;
 
         void render(sf::RenderWindow &window) const;
+
+        Block& at(int x, int y);
+        [[nodiscard]] const Block& at(int x, int y) const;
 
         static const int SIZE = 16;
     };
