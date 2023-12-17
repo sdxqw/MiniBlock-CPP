@@ -10,6 +10,6 @@ namespace mb {
 
         AssetManager(const std::string &atlasPath, int spriteSize);
 
-        [[nodiscard]] TextureAtlas getTextureAtlas() const;
+        const TextureAtlas &getTextureAtlas() const;
     };
 }

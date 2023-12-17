@@ -4,7 +4,7 @@ namespace mb {
     AssetManager::AssetManager(const std::string &atlasPath, int spriteSize)
             : textureAtlas(atlasPath, spriteSize) {}
 
-    TextureAtlas AssetManager::getTextureAtlas() const {
+    const TextureAtlas &AssetManager::getTextureAtlas() const {
         return textureAtlas;
     }
 }

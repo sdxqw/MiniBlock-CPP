@@ -21,7 +21,7 @@ namespace mb {
             for (int j = 0; j < Chunk::SIZE; ++j) {
                 sprite.setTextureRect(blocks.at(i * Chunk::SIZE + j).getTextureRect());
                 sprite.setScale(Block::SIZE, Block::SIZE);
-                sprite.setPosition(static_cast<float>(i * Block::SIZE), static_cast<float>(j * Block::SIZE));
+                sprite.setPosition(static_cast<float>(i * Block::SIZE + position.x), static_cast<float>(j * Block::SIZE + position.y));
                 window.draw(sprite);
             }
         }
@@ -31,7 +31,7 @@ namespace mb {
         return position;
     }
 
-    Block &Chunk::at(int x, int y) {
-        return blocks[x * Chunk::SIZE + y];
+    Block &Chunk::get(sf::Vector2i pos) {
+        return blocks[pos.x * Chunk::SIZE + pos.y];
     }
 }

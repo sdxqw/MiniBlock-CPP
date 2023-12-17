@@ -7,8 +7,8 @@ namespace mb {
             throw std::invalid_argument("TextureAtlas: Could not load texture from " + atlasPath);
         }
 
-        textureRects[static_cast<int>(TextureAtlas::Type::Dirt)] = sf::IntRect(0, 0, spriteSize, spriteSize);
-        textureRects[static_cast<int>(TextureAtlas::Type::Grass)] = sf::IntRect(spriteSize, 0, spriteSize, spriteSize);
+        textureRects[2] = sf::IntRect(0, 0, spriteSize, spriteSize);
+        textureRects[3] = sf::IntRect(spriteSize, 0, spriteSize, spriteSize);
     }
 
     const sf::Texture &TextureAtlas::getTexture() const noexcept {
